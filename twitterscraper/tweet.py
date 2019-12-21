@@ -8,38 +8,20 @@ from coala_utils.decorators import generate_ordering
 @generate_ordering('timestamp', 'id', 'text', 'user', 'replies', 'retweets', 'likes')
 class Tweet:
     def __init__(
-        self, screen_name, username, user_id, tweet_id, tweet_url, timestamp,
-        timestamp_epochs, text, text_html, links, hashtags, has_media, img_urls,
-        video_url, likes, retweets, replies, is_replied, is_reply_to,
-        parent_tweet_id, reply_to_users
+        self, user_id, tweet_id, timestamp,
+         text, likes, retweets, replies
     ):
         # user name & id
-        self.screen_name = screen_name
-        self.username = username
         self.user_id = user_id
         # tweet basic data
         self.tweet_id = tweet_id
-        self.tweet_url = tweet_url
         self.timestamp = timestamp
-        self.timestamp_epochs = timestamp_epochs
         # tweet text
         self.text = text
-        self.text_html = text_html
-        self.links = links
-        self.hashtags = hashtags
-        # tweet media
-        self.has_media = has_media
-        self.img_urls = img_urls
-        self.video_url = video_url
         # tweet actions numbers
         self.likes = likes
         self.retweets = retweets
         self.replies = replies
-        self.is_replied = is_replied
-        # detail of reply to others
-        self.is_reply_to = is_reply_to
-        self.parent_tweet_id = parent_tweet_id
-        self.reply_to_users = reply_to_users
 
     @classmethod
     def from_soup(cls, tweet):
@@ -120,10 +102,8 @@ class Tweet:
             } for user in soup_reply_to_users]
 
         return cls(
-            screen_name, username, user_id, tweet_id, tweet_url, timestamp,
-            timestamp_epochs, text, text_html, links, hashtags, has_media,
-            img_urls, video_url, likes, retweets, replies, is_replied,
-            is_reply_to, parent_tweet_id, reply_to_users
+            user_id, tweet_id, timestamp,
+            text, likes, retweets, replies
         )
 
     @classmethod

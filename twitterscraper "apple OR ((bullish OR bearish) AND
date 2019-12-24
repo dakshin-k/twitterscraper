@@ -1,0 +1,1 @@
+twitterscraper "apple OR ((bullish OR bearish) AND (AAPL or apple)) -cider -juice -cinnamon" -p 30 -o -bd 2017- -ed 

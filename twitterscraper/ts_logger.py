@@ -10,4 +10,4 @@ logger.addHandler(handler)
 
 level = logging.INFO
 logger.setLevel(level)
-logging.disable(level)
+# logging.disable(level)

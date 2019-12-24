@@ -39,9 +39,9 @@ RELOAD_URL_USER = 'https://twitter.com/i/profiles/show/{u}/timeline/tweets?' \
                   'max_position={pos}&reset_error_state=false'
 PROXY_URL = 'https://free-proxy-list.net/'
 
-def get_proxies():
+def get_proxies_meow():
     response = requests.get(PROXY_URL)
-    soup = BeautifulSoup(response.text, 'lxml')
+    soup = BeautifulSoup(response.text, 'lxml')ƒ
     table = soup.find('table',id='proxylisttable')
     list_tr = table.find_all('tr')
     list_td = [elem.find_all('td') for elem in list_tr]
@@ -49,7 +49,9 @@ def get_proxies():
     list_ip = [elem[0].text for elem in list_td]
     list_ports = [elem[1].text for elem in list_td]
     list_proxies = [':'.join(elem) for elem in list(zip(list_ip, list_ports))]
-    return list_proxies               
+    return list_proxies   
+def get_proxies():
+	return['proxy.ssn.net:8080']            
                   
 def get_query_url(query, lang, pos, from_user = False):
     if from_user:
